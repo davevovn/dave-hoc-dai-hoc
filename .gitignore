@@ -1,0 +1,4 @@
+*.zip
+CTDL DT/.DS_Store
+CTDL DT/.vscode/tasks.json
+**/main
