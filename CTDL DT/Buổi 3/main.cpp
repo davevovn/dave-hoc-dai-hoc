@@ -4,11 +4,13 @@
 
 using namespace std;
 
-struct Node {
+struct Node
+{
   int data;
   Node *next;
 };
-struct List {
+struct List
+{
   Node *pHead;
   Node *pTail;
 };
@@ -20,7 +22,8 @@ struct List {
 *  Output:
          + Node* node;
  */
-Node *initNode(int value) {
+Node *initNode(int value)
+{
   Node *node = new Node();
   node->data = value;
   node->next = nullptr;
@@ -34,7 +37,8 @@ Node *initNode(int value) {
  *  Output:
  *         + List* list;
  */
-List *initist() {
+List *initist()
+{
   List *list = new List();
   list->pHead = nullptr;
   list->pTail = nullptr;
@@ -49,12 +53,16 @@ List *initist() {
  *  Output:
          + List* l;
  */
-void addFirst(List *l, int value) {
+void addFirst(List *l, int value)
+{
   Node *newNode = initNode(value);
-  if (l->pHead == nullptr) {
+  if (l->pHead == nullptr)
+  {
     l->pHead = newNode;
     l->pTail = newNode;
-  } else {
+  }
+  else
+  {
     newNode->next = l->pHead;
     l->pHead = newNode;
   }
@@ -68,12 +76,16 @@ void addFirst(List *l, int value) {
  *  Output:
          + List* l;
  */
-void addLast(List *l, int value) {
+void addLast(List *l, int value)
+{
   Node *newNode = initNode(value);
-  if (l->pHead == nullptr) {
+  if (l->pHead == nullptr)
+  {
     l->pHead = newNode;
     l->pTail = newNode;
-  } else {
+  }
+  else
+  {
     l->pTail->next = newNode;
     l->pTail = newNode;
   }
@@ -88,8 +100,10 @@ void addLast(List *l, int value) {
 *  Output:
         + List* l;
 */
-void inputList(List *l, int *arr, int size) {
-  for (int i = 0; i < size; i++) {
+void inputList(List *l, int *arr, int size)
+{
+  for (int i = 0; i < size; i++)
+  {
     addLast(l, *(arr + i));
   }
 }
@@ -101,11 +115,14 @@ void inputList(List *l, int *arr, int size) {
 *  Output:
         + cout;
 */
-void printList(List *l) {
+void printList(List *l)
+{
   Node *temp = l->pHead;
-  while (temp != nullptr) {
+  while (temp != nullptr)
+  {
     cout << temp->data;
-    if (temp->next != nullptr) {
+    if (temp->next != nullptr)
+    {
       cout << ", ";
     }
     temp = temp->next;
@@ -120,11 +137,14 @@ void printList(List *l) {
 * Output:
         + cout;
 */
-void printListWithAddress(List *l) {
+void printListWithAddress(List *l)
+{
   Node *temp = l->pHead;
-  while (temp != nullptr) {
+  while (temp != nullptr)
+  {
     cout << temp->data << "->(" << temp << ") ";
-    if (temp->next != nullptr) {
+    if (temp->next != nullptr)
+    {
       cout << ", ";
     }
     temp = temp->next;
@@ -150,9 +170,11 @@ bool isEmpty(List *l) { return l->pHead == nullptr; }
         + Node* node;
 */
 
-Node *getNodeAt(List *l, int n) {
+Node *getNodeAt(List *l, int n)
+{
   Node *temp = l->pHead;
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; i++)
+  {
     temp = temp->next;
   }
   return temp;
@@ -167,10 +189,13 @@ Node *getNodeAt(List *l, int n) {
         + Node* node;
 */
 
-Node *findNode(List *l, int x) {
+Node *findNode(List *l, int x)
+{
   Node *temp = l->pHead;
-  while (temp != nullptr) {
-    if (temp->data == x) {
+  while (temp != nullptr)
+  {
+    if (temp->data == x)
+    {
       return temp;
     }
     temp = temp->next;
@@ -189,11 +214,14 @@ Node *findNode(List *l, int x) {
         + Node**& arr;
         + int& size;
 */
-Node **findNodeAddressWithValueX(List *l, int x, int &size) {
+Node **findNodeAddressWithValueX(List *l, int x, int &size)
+{
   Node **arr;
   Node *temp = l->pHead;
-  while (temp != nullptr) {
-    if (temp->data == x) {
+  while (temp != nullptr)
+  {
+    if (temp->data == x)
+    {
       size++;
     }
     temp = temp->next;
@@ -201,8 +229,10 @@ Node **findNodeAddressWithValueX(List *l, int x, int &size) {
   arr = new Node *[size];
   temp = l->pHead;
   int index = 0;
-  while (temp != nullptr) {
-    if (temp->data == x) {
+  while (temp != nullptr)
+  {
+    if (temp->data == x)
+    {
       arr[index] = temp;
       index++;
     }
@@ -222,15 +252,20 @@ Node **findNodeAddressWithValueX(List *l, int x, int &size) {
         + int& soDuong;
 */
 void countNegativePossitive(List *l, int &countOfNegative,
-                            int &countOfPossitive) {
+                            int &countOfPossitive)
+{
 
   countOfNegative = 0;
   countOfPossitive = 0;
   Node *temp = l->pHead;
-  while (temp != nullptr) {
-    if (temp->data < 0) {
+  while (temp != nullptr)
+  {
+    if (temp->data < 0)
+    {
       countOfNegative++;
-    } else if (temp->data > 0) {
+    }
+    else if (temp->data > 0)
+    {
       countOfPossitive++;
     }
     temp = temp->next;
@@ -244,12 +279,16 @@ void countNegativePossitive(List *l, int &countOfNegative,
 *   Output:
         + Node* node;
 */
-Node *findMaxNegativeNode(List *l) {
+Node *findMaxNegativeNode(List *l)
+{
   Node *temp = l->pHead;
   Node *maxNegativeNode = nullptr;
-  while (temp != nullptr) {
-    if (temp->data < 0) {
-      if (maxNegativeNode == nullptr || temp->data > maxNegativeNode->data) {
+  while (temp != nullptr)
+  {
+    if (temp->data < 0)
+    {
+      if (maxNegativeNode == nullptr || temp->data > maxNegativeNode->data)
+      {
         maxNegativeNode = temp;
       }
     }
@@ -265,12 +304,16 @@ Node *findMaxNegativeNode(List *l) {
 *   Output:
         +  Node* node;
 */
-Node *findMinOddNode(List *l) {
+Node *findMinOddNode(List *l)
+{
   Node *temp = l->pHead;
   Node *minOddNode = nullptr;
-  while (temp != nullptr) {
-    if (temp->data % 2 != 0) {
-      if (minOddNode == nullptr || temp->data < minOddNode->data) {
+  while (temp != nullptr)
+  {
+    if (temp->data % 2 != 0)
+    {
+      if (minOddNode == nullptr || temp->data < minOddNode->data)
+      {
         minOddNode = temp;
       }
     }
@@ -288,10 +331,13 @@ Node *findMinOddNode(List *l) {
 *  Output:
         + List* l;
 */
-void replaceXWithValueY(List *l, int x, int y) {
+void replaceXWithValueY(List *l, int x, int y)
+{
   Node *temp = l->pHead;
-  while (temp != nullptr) {
-    if (temp->data == x) {
+  while (temp != nullptr)
+  {
+    if (temp->data == x)
+    {
       temp->data = y;
     }
     temp = temp->next;
@@ -305,17 +351,20 @@ void replaceXWithValueY(List *l, int x, int y) {
 *  Output:
         + List* l;
 */
-List *copyList(List *l) {
+List *copyList(List *l)
+{
   List *newList = initist();
   Node *temp = l->pHead;
-  while (temp != nullptr) {
+  while (temp != nullptr)
+  {
     addLast(newList, temp->data);
     temp = temp->next;
   }
   return newList;
 }
 
-int main() {
+int main()
+{
   List *l = initist();
   cout << "Test: Thêm phần từ vào đầu danh sách" << endl;
   addFirst(l, 1);
@@ -340,9 +389,12 @@ int main() {
   printListWithAddress(l);
 
   cout << "Test: Kiểm tra danh sách liên kết đơn có rỗng hay không" << endl;
-  if (isEmpty(l)) {
+  if (isEmpty(l))
+  {
     cout << "Danh sách rỗng" << endl;
-  } else {
+  }
+  else
+  {
     cout << "Danh sách không rỗng" << endl;
   }
 
@@ -350,9 +402,12 @@ int main() {
   cout << "Test: Kiểm tra danh sách liên kết đơn có rỗng hay không(danh sách "
           "này chắc chắn rỗng)"
        << endl;
-  if (isEmpty(emptyList)) {
+  if (isEmpty(emptyList))
+  {
     cout << "Danh sách rỗng" << endl;
-  } else {
+  }
+  else
+  {
     cout << "Danh sách không rỗng" << endl;
   }
 
@@ -378,7 +433,8 @@ int main() {
   int size = 0;
   Node **nodesWithValueEq7 = findNodeAddressWithValueX(l, 7, size);
   cout << "Các node có giá trị bằng 7 là: " << endl;
-  for (int i = 0; i < size; i++) {
+  for (int i = 0; i < size; i++)
+  {
     cout << (*(nodesWithValueEq7 + i))->data << " "
          << (*(nodesWithValueEq7 + i)) << endl;
   }
@@ -400,18 +456,24 @@ int main() {
   cout << "Test: Tìm node có giá trị âm lớn nhất" << endl;
 
   Node *maxNegativeNode = findMaxNegativeNode(l);
-  if (maxNegativeNode != nullptr) {
+  if (maxNegativeNode != nullptr)
+  {
     cout << "Node có giá trị âm lớn nhất là: " << maxNegativeNode->data << endl;
-  } else {
+  }
+  else
+  {
     cout << "Không có node nào có giá trị âm" << endl;
   }
 
   cout << "Test: Tìm node có giá trị lẻ nhỏ nhất" << endl;
 
   Node *minOddNode = findMinOddNode(l);
-  if (minOddNode != nullptr) {
+  if (minOddNode != nullptr)
+  {
     cout << "Node có giá trị lẻ nhỏ nhất là: " << minOddNode->data << endl;
-  } else {
+  }
+  else
+  {
     cout << "Không có node nào có giá trị lẻ" << endl;
   }
 
